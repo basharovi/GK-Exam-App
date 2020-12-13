@@ -1,0 +1,38 @@
+﻿<Window x:Class="GKExamApp.UI.SignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Sign up" Height="526" Width="598"
+        ResizeMode="NoResize"  Closing="Window_Closing"
+        WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
+    <Grid Margin="0,0,323,32">
+        <Rectangle Height="330" VerticalAlignment="Top" Margin="-5,0,-326,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange"/>
+                    <GradientStop Color="OrangeRed" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Source="/Assets/home.png" Height="90" VerticalAlignment="Top" Margin="230,12,-91,0"/>
+        <Rectangle Margin="30,110,-291,59" RadiusY="10" RadiusX="10" Fill="White">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Button x:Name="SignUpButton" HorizontalAlignment="Left" Content="SIGN UP" FontFamily="Impact" FontSize="25" Width="165" Background="OrangeRed" BorderBrush="DarkSeaGreen" Margin="220,366,-116,45" RenderTransformOrigin="0.152,2.035" Height="Auto" Click="SignUpButton_Click"/>
+
+        <TextBox x:Name="FirstNameTextBox" Margin="69,145,0,263" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="16"/>
+        <PasswordBox x:Name="PasswordTextBox" Margin="69,285,0,130" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="16"/>
+        <Label Name="ForgetPasswordLabel" Content="Already Signed up?" HorizontalAlignment="Left" Margin="119,419,0,0" VerticalAlignment="Top" Width="150" FontSize="15" FontWeight="Bold" />
+        <Button Content="Login" Name="LoginButton" HorizontalAlignment="Left" Background="LightSeaGreen" Margin="320,422,-156,0" VerticalAlignment="Top" Width="95" Height="30" FontSize="15" Click="LogInButton_Click"/>
+        <TextBox x:Name="LastNameTextBox" Margin="305,145,-236,263" materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="16"/>
+        <PasswordBox x:Name="ConfirmPasswordTextBox" Margin="305,285,-236,130" materialDesign:HintAssist.Hint="Confirm Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="16"/>
+        <TextBox x:Name="UserNameTextBox" Margin="69,210,0,198" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="16"/>
+        <TextBox x:Name="EmailTextBox" Margin="305,210,-236,198" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="16"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="GKExamApp.UI.AdminDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Dashboard" Height="661.697" Width="826.221" Closing="Window_Closing"
+        ResizeMode="NoResize"
+          WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,4,5" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="715*"/>
+            <ColumnDefinition Width="101*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="CsvInputButton"  Margin="63,155,335,344" Background="White" BorderBrush="#fff" Height="Auto" Click="CSVInputButton_Click">
+            <StackPanel >
+                <StackPanel Orientation="Horizontal" Width="301">
+
+                    <Image Source="/Assets/QuizApp.png" Height="61" Width="52" Margin="0 0 20 40"/>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="DeepSkyBlue" FontSize="30" Margin="0 5 20 10" TextAlignment="Left" Height="40" Width="189"   ><Run Text="A"/><Run Text="ccount"/></TextBlock>
+                        <TextBlock  Foreground="DeepSkyBlue" FontSize="18" TextAlignment="Left" Height="46" Width="207"   Text="Manage your account"   />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Button>
+        <TextBlock  Foreground="DeepSkyBlue"  HorizontalAlignment="Center" Margin="303,45,175,0"  Text="Dashboard" VerticalAlignment="Top" Height="57" Width="237" FontSize="40" TextAlignment="Center" FontWeight="Bold"/>
+        <Button x:Name="AddButton"  Margin="443,157,52,342" Background="#fff" BorderBrush="#fff" Height="Auto" Click="AddButton_Click" Grid.ColumnSpan="2">
+            <StackPanel >
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="/Assets/QuizApp.png" Height="60" Width="52" Margin="0 0 20 40"/>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="DeepSkyBlue" FontSize="30" Margin="0 5 20 10" TextAlignment="Left" Height="40" Width="161"   ><Run Text="A"/><Run Text="DD"/><LineBreak/><Run/><Run Text=" "/></TextBlock>
+                        <TextBlock  Foreground="DeepSkyBlue" FontSize="18" TextAlignment="Left" Height="49"   Text="Add New Question"   />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Button>
+        <Button x:Name="ShowAllButton"  Margin="62,379,335,120" Background="#fff" BorderBrush="#fff" Height="Auto" Click="ShowAllButton_Click">
+            <StackPanel >
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="/Assets/QuizApp.png" Height="61" Width="56" Margin="0 0 20 40"/>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="DeepSkyBlue" FontSize="30" Margin="0 5 20 10" TextAlignment="Left" Height="40" Width="194"   ><Run Text="Question"/><Run Text="s"/></TextBlock>
+                        <TextBlock  Foreground="DeepSkyBlue" FontSize="18" TextAlignment="Left"   ><Run Text="List of All "/><Run Text="Questions"/></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Button>
+        <Button x:Name="P" Margin="443,379,52,120" Background="#fff" BorderBrush="#fff" Height="Auto" Click="P_Click" Grid.ColumnSpan="2">
+            <StackPanel >
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="/Assets/QuizApp.png" Height="61" Width="52" Margin="0 0 20 40"/>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Users" Foreground="DeepSkyBlue" FontSize="30" Margin="0 5 20 10" TextAlignment="Left" Height="41" Width="183"   />
+                        <TextBlock  Foreground="DeepSkyBlue" Text="List of All Users" FontSize="18" TextAlignment="Left"   />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Button>
+        <Image  MouseDown="Logout_MouseDown" Source="/Assets/Close.jpg" Margin="698,29,52,490" RenderTransformOrigin="0.426,0.631" Grid.ColumnSpan="2"
+                Grid.Column="0" />
+
+    </Grid>
+</Window>

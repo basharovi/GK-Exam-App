@@ -1,0 +1,38 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="GKExamApp.UI.ShowAll"
+        mc:Ignorable="d" Closing="Window_Closing"
+        Title="Show All" Height="700" Width="1200"
+      ResizeMode="NoResize" 
+
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="45,41,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="-0.696,0.422" Click="BackButton_Click"/>
+
+        <DataGrid Name="ShowGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="470" Margin="105,160,0,0" VerticalAlignment="Top" Width="976" ItemsSource="{Binding HolderModel}" SelectionChanged="ShowGrid_SelectionChanged" CanUserResizeRows="False" ColumnWidth="SizeToHeader" MinColumnWidth="50" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SL" Binding="{Binding Index}"  Width="*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"  Width="*"/>
+                <DataGridTextColumn Header="Rank" Binding="{Binding Rank}"  Width="*"/>
+                <DataGridTextColumn Header="PN / BM" Binding="{Binding Pn}"  Width="*"/>
+                <DataGridTextColumn Header="BloodGroup" Binding="{Binding BloodGroup}"  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="EditButton" Content="Update Info" HorizontalAlignment="Left" Margin="925,25,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="-0.696,0.422" Height="47" Background="DarkKhaki" FontSize="15" Click="EditButton_Click"/>
+        
+        <TextBox x:Name="SearchByNameTextBox" 
+                 Margin="125,90,814,527" 
+                 materialDesign:HintAssist.Hint="Search By Name" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                 FontFamily="Champagne &amp; Limousines" 
+                 FontSize="16" SelectionOpacity="0.5" 
+                 KeyUp="SearchByName_KeyUp"/>
+       
+        <TextBox x:Name="SearchByPnTextBox" Margin="485,90,483,527" materialDesign:HintAssist.Hint="Search By PN / BM" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="16" SelectionOpacity="0.5" KeyUp="SearchByPn_KeyUp"/>
+        <TextBox x:Name="SearchByRankTextBox" Margin="826,93,113,527" materialDesign:HintAssist.Hint="Search By Rank" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="16" SelectionOpacity="0.5" KeyUp="SearchByRank_KeyUp"/>
+
+    </Grid>
+</Window>
