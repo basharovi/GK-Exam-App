@@ -1,12 +1,14 @@
-﻿namespace GKExamApp
+﻿using GKExamApp.Models;
+
+namespace GKExamApp
 {
     public static class Utilities
     {
-        public static string UserRole { get; private set; }
+        public static User UserModel { get; private set; }
 
-        public static void SetUserRole(string userRole)
+        public static void SetUserModel(User user)
         {
-            UserRole = userRole;
+            UserModel = user;
         }
 
     }

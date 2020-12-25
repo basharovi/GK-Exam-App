@@ -83,7 +83,7 @@ namespace GKExamApp.UI
                     Hide();
                 }
 
-                Utilities.SetUserRole(theUser.Role);
+                Utilities.SetUserModel(theUser);
             }
 
             catch (SqlException)
