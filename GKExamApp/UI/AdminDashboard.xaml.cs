@@ -35,9 +35,12 @@ namespace GKExamApp.UI
             Hide();
         }
 
-        private void P_Click(object sender, RoutedEventArgs e)
+        private void UserListButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Under Construction! Thanks :D");
+            var test = new UserList();
+            test.Closed += (s, args) => Close();
+            test.Show();
+            Hide();
         }
 
 

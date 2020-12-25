@@ -1,0 +1,87 @@
+﻿<Window
+    x:Class="GKExamApp.UI.UserList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Show All"
+    Width="1200"
+    Height="700"
+    Closing="Window_Closing"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <Button
+            x:Name="BackButton"
+            Width="74"
+            Margin="45,41,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BackButton_Click"
+            Content="Back"
+            RenderTransformOrigin="-0.696,0.422" />
+
+        <DataGrid
+            Name="ShowGrid"
+            Width="976"
+            Height="470"
+            Margin="105,160,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeRows="False"
+            ColumnWidth="SizeToHeader"
+            IsReadOnly="True"
+            ItemsSource="{Binding User}"
+            MinColumnWidth="50"
+            SelectionChanged="ShowGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Index}"
+                    Header="SL" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="Name" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Username}"
+                    Header="Username" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Email}"
+                    Header="Email" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Role}"
+                    Header="Role" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            x:Name="EditButton"
+            Width="156"
+            Height="47"
+            Margin="925,25,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="DarkKhaki"
+            Click="EditButton_Click"
+            Content="Update Info"
+            FontSize="15"
+            RenderTransformOrigin="-0.696,0.422" />
+
+        <TextBox
+            x:Name="SearchByNameTextBox"
+            Margin="125,90,771,527"
+            materialDesign:HintAssist.Hint="Search By Name"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            KeyUp="SearchByName_KeyUp"
+            SelectionOpacity="0.5"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+    </Grid>
+</Window>

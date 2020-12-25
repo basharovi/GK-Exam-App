@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows;
 using GKExamApp.Data;
 using GKExamApp.Models;
-using MessageBox = System.Windows.MessageBox;
 
 namespace GKExamApp.UI
 {
