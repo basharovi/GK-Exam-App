@@ -25,9 +25,9 @@ namespace GKExamApp.UI
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            //var dashboard = new Dashboard();
-            //dashboard.Show();
-            //Hide();
+            var dashboard = new AdminDashboard();
+            dashboard.Show();
+            Hide();
         }
 
 
@@ -57,10 +57,14 @@ namespace GKExamApp.UI
         {
             var name = SearchByNameTextBox.Text;
             if (string.IsNullOrWhiteSpace(name))
+            {
+                ShowGrid.ItemsSource = _db.Users.ToList();
                 return;
+            }
 
+            ShowGrid.ItemsSource = null;
             ShowGrid.ItemsSource = _db.Users.Where(x => x.Name.ToLower()
-            .Equals(name.ToLower())).ToList();
+            .Contains(name.ToLower())).ToList();
         }
     }
 }
