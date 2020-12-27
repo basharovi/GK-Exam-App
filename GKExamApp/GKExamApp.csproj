@@ -101,6 +101,9 @@
     <Compile Include="Models\Exam.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="UI\Account.xaml.cs">
+      <DependentUpon>Account.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\Account.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\UserList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
