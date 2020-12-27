@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
+using System.ComponentModel;
 
 namespace GKExamApp.UI
 {
@@ -24,7 +24,7 @@ namespace GKExamApp.UI
 
         private void CSVInputButton_Click(object sender, RoutedEventArgs e)
         {
-            var test = new Accounts();
+            var test = new Account();
             test.Closed += (s, args) => Close();
             test.Show();
             Hide();
@@ -45,7 +45,6 @@ namespace GKExamApp.UI
             test.Show();
             Hide();
         }
-
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {

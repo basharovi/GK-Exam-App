@@ -42,7 +42,7 @@ namespace GKExamApp.UI
                 return;
 
 
-            _db.Questions.Add(GetQuestionFromUi());
+            //_db.Questions.Add(GetQuestionFromUi());
 
             var message = _db.SaveChanges() > 0 ? "Question Added Successfully!" : "Add Failed!";
 
@@ -61,49 +61,28 @@ namespace GKExamApp.UI
 
         private bool IsInputValid()
         {
-            if (string.IsNullOrEmpty(TextBoxQuestion.Text))
+            if (string.IsNullOrEmpty(FirstNameTextBox.Text))
             {
-                MessageBox.Show("Question TextBox is Empty!");
+                MessageBox.Show("First Name is Empty!");
                 return false;
             }
-            if (string.IsNullOrEmpty(TextBoxOptionA.Text))
+            if (string.IsNullOrEmpty(LastNameTextBox.Text))
             {
-                MessageBox.Show("Option A is Empty!");
+                MessageBox.Show("Last Name is Empty!");
                 return false;
             }
-            if (string.IsNullOrEmpty(TextBoxOptionB.Text))
+            if (string.IsNullOrEmpty(EmailTextBox.Text))
             {
-                MessageBox.Show("Option B is Empty!");
+                MessageBox.Show("Email is Empty!");
                 return false;
             }
-            if (string.IsNullOrEmpty(TextBoxOptionC.Text))
+            if (string.IsNullOrEmpty(PasswordTextBox.Password))
             {
-                MessageBox.Show("Option C is Empty!");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(TextBoxOptionD.Text))
-            {
-                MessageBox.Show("Option D is Empty!");
+                MessageBox.Show("Password is Empty!");
                 return false;
             }
 
             return true;
-        }
-
-        private Question GetQuestionFromUi()
-        {
-            var question = new Question()
-            {
-                QuestionText = TextBoxQuestion.Text,
-                OptionA = TextBoxOptionA.Text,
-                OptionB = TextBoxOptionB.Text,
-                OptionC = TextBoxOptionC.Text,
-                OptionD = TextBoxOptionD.Text,
-                RightAnswer = AnswerComboBox.Text
-            };
-
-            return question;
         }
     }
 }

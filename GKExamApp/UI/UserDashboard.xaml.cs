@@ -27,7 +27,7 @@ namespace GKExamApp.UI
             MessageBox.Show("Under Construction! Thanks :D");
         }
 
-        private void ShowAllButton_Click(object sender, RoutedEventArgs e)
+        private void MeritListButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Under Construction! Thanks :D");
         }
@@ -38,9 +38,12 @@ namespace GKExamApp.UI
         }
 
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void AccountButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Under Construction! Thanks :D");
+            var test = new Account();
+            test.Closed += (s, args) => Close();
+            test.Show();
+            Hide();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
