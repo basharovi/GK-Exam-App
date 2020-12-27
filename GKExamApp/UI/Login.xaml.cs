@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Data.SqlClient;
-using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -54,12 +53,12 @@ namespace GKExamApp.UI
         }
 
 
-        private async Task<string> LogIn()
+        private async Task LogIn()
         {
             try
             {
                 if (IsInputValid() == false)
-                    return "";
+                    return;
 
                 var theUser = await _db.Users.FirstOrDefaultAsync(m => m.Username.Equals(UserNameTextBox.Text)
                                                                        && m.Password.Equals(PasswordTextBox.Password));
@@ -67,7 +66,7 @@ namespace GKExamApp.UI
                 if (theUser == null)
                 {
                     MessageBox.Show("Username or Password is incorrect!");
-                    return "";
+                    return;
                 }
 
                 if (theUser.Role.Equals("Admin"))
@@ -89,7 +88,7 @@ namespace GKExamApp.UI
             catch (SqlException)
             {
                 MessageBox.Show("Please, connect to internet!");
-                return "";
+                return;
             }
 
             catch (Exception ex)
@@ -97,7 +96,7 @@ namespace GKExamApp.UI
                 MessageBox.Show(ex.Message);
             }
 
-            return "";
+            return;
         }
 
         private bool IsInputValid()
