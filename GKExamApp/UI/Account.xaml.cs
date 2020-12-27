@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using GKExamApp.Data;
 using GKExamApp.Models;
@@ -19,17 +22,15 @@ namespace GKExamApp.UI
         {
             InitializeComponent();
 
+            BindUi();
             _db = new ApplicationDbContext();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var test = new AdminDashboard();
-            test.Closed += (s, args) => Close();
-            test.Show();
-            Hide();
+            GoToDashboard();
         }
-       
+
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
@@ -38,25 +39,49 @@ namespace GKExamApp.UI
 
         private void SubmitButton_OnClickButton_Click(object sender, RoutedEventArgs e)
         {
-            if(IsInputValid() == false)
-                return;
+            try
+            {
+                if (IsInputValid() == false)
+                    return;
 
+                var aUser = GetUserFromUi();
 
-            //_db.Questions.Add(GetQuestionFromUi());
+                _db.Entry(aUser).State = EntityState.Modified;
 
-            var message = _db.SaveChanges() > 0 ? "Question Added Successfully!" : "Add Failed!";
+                var message = _db.SaveChanges() > 0 ? "Data Update Successful!" : "Data Update Failed!";
 
-            MessageBox.Show(message);
+                MessageBox.Show(message);
 
-            Clear();
+                Utilities.SetUserModel(aUser);
+
+                GoToDashboard();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void Clear()
+        private User GetUserFromUi()
         {
-            FirstNameTextBox.Clear();
-            LastNameTextBox.Clear();
-            EmailTextBox.Clear();
-            PasswordTextBox.Clear();
+            var user = _db.Users.Find(Utilities.UserModel.Id);
+
+            user.Name = FirstNameTextBox.Text + " " + LastNameTextBox.Text;
+            user.Email = EmailTextBox.Text;
+            user.Password = PasswordTextBox.Password;
+
+            return user;
+        }
+
+        private void BindUi()
+        {
+            var name = Utilities.UserModel.Name.Split(' ');
+
+            FirstNameTextBox.Text = name?[0];
+            LastNameTextBox.Text = name?[1];
+            EmailTextBox.Text = Utilities.UserModel.Email;
+            PasswordTextBox.Password = Utilities.UserModel.Password;
         }
 
         private bool IsInputValid()
@@ -76,6 +101,11 @@ namespace GKExamApp.UI
                 MessageBox.Show("Email is Empty!");
                 return false;
             }
+            if (IsValidEmailAddress(EmailTextBox.Text) == false)
+            {
+                MessageBox.Show("Please, Enter a valid Email Address!");
+                return false;
+            }
             if (string.IsNullOrEmpty(PasswordTextBox.Password))
             {
                 MessageBox.Show("Password is Empty!");
@@ -83,6 +113,29 @@ namespace GKExamApp.UI
             }
 
             return true;
+        }
+
+        private void GoToDashboard()
+        {
+            if (Utilities.UserModel.Role.Equals("Admin"))
+            {
+                var admin = new AdminDashboard();
+                admin.Show();
+                Hide();
+            }
+            else
+            {
+                var user = new UserDashboard();
+                user.Show();
+                Hide();
+            }
+        }
+
+        private static bool IsValidEmailAddress(string email)
+        {
+            var regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+
+            return regex.IsMatch(email);
         }
     }
 }
