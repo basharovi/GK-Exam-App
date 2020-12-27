@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GKExamApp.Models
 {
@@ -14,5 +15,8 @@ namespace GKExamApp.Models
         public string Role { get; set; }
 
         public List<Exam> Exams { get; set; }
+
+        [NotMapped]
+        public int Index { get; set; }
     }
 }

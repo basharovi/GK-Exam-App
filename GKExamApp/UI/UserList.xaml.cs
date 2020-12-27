@@ -1,4 +1,6 @@
 ﻿using GKExamApp.Data;
+using GKExamApp.Models;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -14,13 +16,14 @@ namespace GKExamApp.UI
     {
         private readonly ApplicationDbContext _db;
         private bool _isGridRowSelected;
+        private List<User> _users;
 
         public UserList()
         {
             InitializeComponent();
 
             _db = new ApplicationDbContext();
-            ShowGrid.ItemsSource = _db.Users.ToList();
+            BindUserList();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -58,13 +61,25 @@ namespace GKExamApp.UI
             var name = SearchByNameTextBox.Text;
             if (string.IsNullOrWhiteSpace(name))
             {
-                ShowGrid.ItemsSource = _db.Users.ToList();
+                ShowGrid.ItemsSource = _users;
                 return;
             }
 
             ShowGrid.ItemsSource = null;
-            ShowGrid.ItemsSource = _db.Users.Where(x => x.Name.ToLower()
-            .Contains(name.ToLower())).ToList();
+            ShowGrid.ItemsSource = _users.Where(x => x.Name.ToLower()
+            .Contains(name.ToLower()));
+        }
+
+        private void BindUserList()
+        {
+            _users = _db.Users.ToList();
+
+            for (var i = 0; i < _users.Count; i++)
+            {
+                _users[i].Index = i + 1;
+            }
+
+            ShowGrid.ItemsSource = _users;
         }
     }
 }

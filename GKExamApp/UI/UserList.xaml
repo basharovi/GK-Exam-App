@@ -60,18 +60,6 @@
                     Header="Role" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button
-            x:Name="EditButton"
-            Width="156"
-            Height="47"
-            Margin="925,25,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="DarkKhaki"
-            Click="EditButton_Click"
-            Content="Update Info"
-            FontSize="15"
-            RenderTransformOrigin="-0.696,0.422" />
 
         <TextBox
             x:Name="SearchByNameTextBox"
