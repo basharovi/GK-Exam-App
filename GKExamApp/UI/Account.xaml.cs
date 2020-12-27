@@ -8,14 +8,14 @@ using GKExamApp.Models;
 namespace GKExamApp.UI
 {
     /// <summary>
-    /// Interaction logic for Accounts.xaml
+    /// Interaction logic for Account.xaml
     /// </summary>
-    public partial class Accounts
+    public partial class Account
     {
         private readonly string _assetDirectory = Directory.GetCurrentDirectory() + @"\Assets";
         private readonly ApplicationDbContext _db;
 
-        public Accounts()
+        public Account()
         {
             InitializeComponent();
 

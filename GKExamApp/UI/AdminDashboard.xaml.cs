@@ -24,7 +24,10 @@ namespace GKExamApp.UI
 
         private void CSVInputButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Under Construction! Thanks :D");
+            var test = new Accounts();
+            test.Closed += (s, args) => Close();
+            test.Show();
+            Hide();
         }
 
         private void ShowAllButton_Click(object sender, RoutedEventArgs e)
