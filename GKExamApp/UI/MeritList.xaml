@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="GKExamApp.UI.UserList"
+    x:Class="GKExamApp.UI.MeritList"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -34,9 +34,8 @@
             CanUserResizeRows="False"
             ColumnWidth="SizeToHeader"
             IsReadOnly="True"
-            ItemsSource="{Binding User}"
-            MinColumnWidth="50"
-            SelectionChanged="ShowGrid_SelectionChanged">
+            ItemsSource="{Binding MeritViewModel}"
+            MinColumnWidth="50">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
@@ -50,6 +49,11 @@
                     Width="*"
                     Binding="{Binding TotalScore}"
                     Header="Total Score" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding TotalExam}"
+                    Header="Total Exam" />
 
                 <DataGridTextColumn
                     Width="*"

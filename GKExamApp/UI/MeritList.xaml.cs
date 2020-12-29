@@ -2,10 +2,8 @@
 using GKExamApp.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.Entity;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GKExamApp.UI
@@ -28,7 +26,7 @@ namespace GKExamApp.UI
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var dashboard = new AdminDashboard();
+            var dashboard = new UserDashboard();
             dashboard.Show();
             Hide();
         }
@@ -40,28 +38,43 @@ namespace GKExamApp.UI
 
         private void SearchByName_KeyUp(object sender, KeyEventArgs e)
         {
-            var name = SearchByNameTextBox.Text;
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                ShowGrid.ItemsSource = _users;
-                return;
-            }
+            //var name = SearchByNameTextBox.Text;
+            //if (string.IsNullOrWhiteSpace(name))
+            //{
+            //    ShowGrid.ItemsSource = _users;
+            //    return;
+            //}
 
-            ShowGrid.ItemsSource = null;
-            ShowGrid.ItemsSource = _users.Where(x => x.Name.ToLower()
-            .Contains(name.ToLower()));
+            //ShowGrid.ItemsSource = null;
+            //ShowGrid.ItemsSource = _users.Where(x => x.Name.ToLower()
+            //.Contains(name.ToLower()));
         }
 
         private void BindUserList()
         {
+            var meritList = new List<MeritViewModel>();
+
             _users = _db.Users.Include("Exams").ToList();
+
+            foreach (var item in _users)
+            {
+                meritList.Add(new MeritViewModel
+                {
+                    Name = item.Name,
+                    Username = item.Username,
+                    TotalScore = item.Exams.Sum(x => x.Mark),
+                    TotalExam = item.Exams.Count
+                });
+            }
+
+            meritList = meritList.OrderByDescending(x => x.TotalScore).ToList();
 
             for (var i = 0; i < _users.Count; i++)
             {
-                _users[i].Index = i + 1;
+                meritList[i].Position = i + 1;
             }
 
-            ShowGrid.ItemsSource = _users;
+            ShowGrid.ItemsSource = meritList;
         }
     }
 }
