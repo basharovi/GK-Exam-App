@@ -99,10 +99,17 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exam.cs" />
+    <Compile Include="Models\MeritViewModel.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="UI\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Exam.xaml.cs">
+      <DependentUpon>Exam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MeritList.xaml.cs">
+      <DependentUpon>MeritList.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
@@ -145,6 +152,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Account.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Exam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\MeritList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

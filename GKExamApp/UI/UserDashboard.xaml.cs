@@ -29,12 +29,18 @@ namespace GKExamApp.UI
 
         private void MeritListButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Under Construction! Thanks :D");
+            var test = new MeritList();
+            test.Closed += (s, args) => Close();
+            test.Show();
+            Hide();
         }
 
-        private void P_Click(object sender, RoutedEventArgs e)
+        private void ExamButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Under Construction! Thanks :D");
+            var test = new Exam();
+            test.Closed += (s, args) => Close();
+            test.Show();
+            Hide();
         }
 
 

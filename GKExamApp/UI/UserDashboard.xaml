@@ -138,13 +138,13 @@
             </StackPanel>
         </Button>
         <Button
-            x:Name="P"
+            x:Name="ExamButton"
             Grid.ColumnSpan="2"
             Height="Auto"
             Margin="443,379,52,120"
             Background="#fff"
             BorderBrush="#fff"
-            Click="P_Click">
+            Click="ExamButton_Click">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
 
