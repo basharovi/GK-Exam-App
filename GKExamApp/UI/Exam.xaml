@@ -11,7 +11,7 @@
     Closing="Window_Closing"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Window_Loaded">
     <Grid>
         <Button
             x:Name="BackButton"
@@ -113,6 +113,13 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <TextBlock
+            x:Name="CountdownDisplay"
+            Margin="797,62,93,720"
+            FontSize="30"
+            Foreground="DeepSkyBlue"
+            Text="5"
+            TextAlignment="Left" />
 
     </Grid>
 </Window>

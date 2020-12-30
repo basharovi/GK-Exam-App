@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using GKExamApp.Data;
 using GKExamApp.Models;
 
@@ -21,6 +24,8 @@ namespace GKExamApp.UI
 
             _db = new ApplicationDbContext();
             AnswerComboBox.ItemsSource = BindAnswerCombobox();
+
+            
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -117,6 +122,35 @@ namespace GKExamApp.UI
             };
 
             return question;
+        }
+
+        private void StartCountdown(FrameworkElement target, int timerLength)
+        {
+            var countdownAnimation = new StringAnimationUsingKeyFrames();
+            for (var i = timerLength; i > 0; i--)
+            {
+                var keyTime = TimeSpan.FromSeconds(timerLength - i);
+                var frame = new DiscreteStringKeyFrame(i.ToString(), KeyTime.FromTimeSpan(keyTime));
+                countdownAnimation.KeyFrames.Add(frame);
+            }
+            //countdownAnimation.KeyFrames.Add(new DiscreteStringKeyFrame(" ", KeyTime.FromTimeSpan(TimeSpan.FromSeconds(6))));
+            Storyboard.SetTargetName(countdownAnimation, target.Name);
+            Storyboard.SetTargetProperty(countdownAnimation, new PropertyPath(TextBlock.TextProperty));
+
+            var countdownStoryboard = new Storyboard();
+            countdownStoryboard.Children.Add(countdownAnimation);
+            countdownStoryboard.Completed += CountdownTimer_Completed;
+            countdownStoryboard.Begin(this);
+        }
+
+        private void CountdownTimer_Completed(object sender, EventArgs e)
+        {
+            MessageBox.Show("Time's up!");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded += (o, args) => StartCountdown(CountdownDisplay, 120);
         }
     }
 }
