@@ -3,202 +3,113 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Dashboard"
-    Width="826.221"
-    Height="661.697"
+    Title="Upload"
+    Width="1050"
+    Height="850"
     Closing="Window_Closing"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid Margin="0,0,4,5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="715*" />
-            <ColumnDefinition Width="101*" />
-        </Grid.ColumnDefinitions>
-
-        <TextBlock
-            Width="237"
-            Height="57"
-            Margin="303,45,175,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            FontSize="40"
-            FontWeight="Bold"
-            Foreground="DeepSkyBlue"
-            Text="Exam"
-            TextAlignment="Center" />
-        <Image
-            Grid.ColumnSpan="2"
-            Margin="698,29,52,490"
-            MouseDown="Logout_MouseDown"
-            RenderTransformOrigin="0.426,0.631"
-            Source="/Assets/Close.jpg" />
-        <TextBlock
-            x:Name="CountdownDisplay"
-            Margin="75,107,409,451"
-            FontSize="40"
-            Foreground="DeepSkyBlue"
-            Text="5"
-            TextAlignment="Left" />
-
-        <Image
-            Grid.ColumnSpan="2"
-            Width="794"
-            Height="441"
-            Margin="0,177,0,0"
+    <Grid>
+        <Button
+            x:Name="BackButton"
+            Width="74"
+            Margin="45,45,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Opacity=".1"
-            Source="F:\Desktop\Walpaper.jpg" />
+            Click="BackButton_Click"
+            Content="Back"
+            RenderTransformOrigin="-0.696,0.422" />
+        <TextBox
+            x:Name="TextBoxOptionA"
+            Margin="106,309,538,439"
+            materialDesign:HintAssist.Hint="Option A"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxOptionB"
+            Margin="541,309,117,439"
+            materialDesign:HintAssist.Hint="Option B"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxOptionC"
+            Margin="106,399,538,359"
+            materialDesign:HintAssist.Hint="Option C"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxOptionD"
+            Margin="541,387,117,359"
+            materialDesign:HintAssist.Hint="Option D"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <ComboBox
+            x:Name="AnswerComboBox"
+            Width="195"
+            Height="50"
+            Margin="261,534,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            SelectedIndex="0" />
+        <Label
+            Margin="106,543,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Your Choice"
+            FontSize="20"
+            FontWeight="Bold" />
+        <TextBox
+            x:Name="TextBoxQuestion"
+            Margin="106,139,117,572"
+            materialDesign:HintAssist.Hint="The question"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <Button
-            x:Name="start"
-            Width="208"
-            Height="92"
-            Margin="275,383,0,0"
+            x:Name="NextButton"
+            Width="265"
+            Height="64"
+            Margin="579,669,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Panel.ZIndex="17"
-            Content="Start"
+            Content="Next Question"
             FontSize="35"
+            FontStyle="Italic"
             Foreground="#FF200F68">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="#FF091459" />
+                    <GradientStop Offset="0" Color="CadetBlue" />
                     <GradientStop Offset="0.491" Color="White" />
-                    <GradientStop Offset="0.965" Color="#FF020B40" />
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Label
-            x:Name="quest"
-            Width="672"
-            Height="48"
-            Margin="64,94,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#FF10108D"
-            Content=""
-            FontSize="20"
-            Foreground="#FFF3F3F3"
-            Opacity="0.7"
-            Visibility="Hidden" />
-        <Button
-            x:Name="ans1"
-            Width="308"
-            Height="82"
-            Margin="64,222,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button1"
-            FontSize="18"
-            Foreground="#FFFDFDFD"
-            Visibility="Hidden">
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="Black" />
-                    <GradientStop Offset="1" Color="#FF0E0E97" />
+                    <GradientStop Offset="0.965" Color="CadetBlue" />
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
         <Button
-            x:Name="ans2"
-            Width="292"
-            Height="82"
-            Margin="444,222,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button2"
-            FontSize="18"
-            Foreground="#FFFBFBFB"
-            Visibility="Hidden">
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="Black" />
-                    <GradientStop Offset="1" Color="#FF0E0E97" />
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button
-            x:Name="ans4"
-            Width="292"
-            Height="82"
-            Margin="444,329,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button3"
-            FontSize="18"
-            Foreground="White"
-            Visibility="Hidden">
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="Black" />
-                    <GradientStop Offset="1" Color="#FF0E0E97" />
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button
-            x:Name="ans3"
-            Width="308"
-            Height="82"
-            Margin="64,329,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Button4"
-            FontSize="18"
-            Foreground="White"
-            Visibility="Hidden">
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="Black" />
-                    <GradientStop Offset="1" Color="#FF0E0E97" />
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Label
-            x:Name="scoreLbl"
-            Width="116"
-            Margin="64,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Score : "
-            Foreground="White"
-            Visibility="Hidden" />
-        <Label
-            x:Name="final"
-            Width="352"
-            Height="146"
-            Margin="211,96,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="         Congratulations"
-            FontSize="30"
-            Visibility="Hidden">
-            <Label.Foreground>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="#FF1B269B" />
-                    <GradientStop Color="White" />
-                    <GradientStop Offset="0.4" Color="#FF1B269B" />
-                </LinearGradientBrush>
-            </Label.Foreground>
-        </Label>
-        <Button
-            x:Name="restart"
-            Width="208"
-            Height="92"
-            Margin="291,211,0,0"
+            x:Name="FinishButton"
+            Width="265"
+            Height="64"
+            Margin="191,669,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Panel.ZIndex="17"
-            Content="Restart"
+            Content="Finish Exam"
             FontSize="35"
-            Foreground="#FF200F68"
-            Visibility="Hidden">
+            FontStyle="Italic"
+            Foreground="#FF200F68">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="#FF091459" />
+                    <GradientStop Offset="0" Color="CadetBlue" />
                     <GradientStop Offset="0.491" Color="White" />
-                    <GradientStop Offset="0.965" Color="#FF020B40" />
+                    <GradientStop Offset="0.965" Color="CadetBlue" />
                 </LinearGradientBrush>
             </Button.Background>
         </Button>

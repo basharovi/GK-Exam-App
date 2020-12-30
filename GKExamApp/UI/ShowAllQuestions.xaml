@@ -1,33 +1,91 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="GKExamApp.UI.ShowAllQuestions"
-        mc:Ignorable="d" Closing="Window_Closing"
-        Title="Show All" Height="700" Width="1200"
-      ResizeMode="NoResize" 
-
-        WindowStartupLocation="CenterScreen">
+    x:Class="GKExamApp.UI.ShowAllQuestions"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Show All"
+    Width="1200"
+    Height="700"
+    Closing="Window_Closing"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Grid>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="45,41,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="-0.696,0.422" Click="BackButton_Click"/>
+        <Button
+            x:Name="BackButton"
+            Width="74"
+            Margin="45,41,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BackButton_Click"
+            Content="Back"
+            RenderTransformOrigin="-0.696,0.422" />
 
-        <DataGrid Name="ShowGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="470" Margin="105,160,0,0" VerticalAlignment="Top" Width="976" ItemsSource="{Binding Question}" SelectionChanged="ShowGrid_SelectionChanged" CanUserResizeRows="False" ColumnWidth="SizeToHeader" MinColumnWidth="50" IsReadOnly="True">
+        <DataGrid
+            Name="ShowGrid"
+            Width="976"
+            Height="470"
+            Margin="105,160,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeRows="False"
+            ColumnWidth="SizeToHeader"
+            IsReadOnly="True"
+            ItemsSource="{Binding Question}"
+            MinColumnWidth="50"
+            SelectionChanged="ShowGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="SL" Binding="{Binding Index}"  Width="50"/>
-                <DataGridTextColumn Header="Question" Binding="{Binding QuestionText}"  Width="*"/>
+                <DataGridTextColumn
+                    Width="50"
+                    Binding="{Binding Index}"
+                    Header="SL" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding QuestionText}"
+                    Header="Question" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="EditButton" Content="Update" HorizontalAlignment="Left" Margin="800,61,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="-0.696,0.422" Height="52" Background="OrangeRed" FontSize="20" Click="EditButton_Click" FontWeight="Bold" FontStyle="Italic"/>
+        <Button
+            x:Name="EditButton"
+            Width="125"
+            Height="52"
+            Margin="800,61,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="OrangeRed"
+            Click="EditButton_Click"
+            Content="Update"
+            FontSize="20"
+            FontStyle="Italic"
+            FontWeight="Bold"
+            RenderTransformOrigin="-0.696,0.422" />
 
-        <TextBox x:Name="SearchTextBox" 
-                 Margin="240,41,699,558" 
-                 materialDesign:HintAssist.Hint="Search" 
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                 FontFamily="Champagne &amp; Limousines" 
-                 FontSize="16" SelectionOpacity="0.5" 
-                 KeyUp="Search_KeyUp"/>
-        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="956,61,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="-0.696,0.422" Height="52" Background="DarkRed" FontSize="20" Click="DeleteButton_Click" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBox
+            x:Name="SearchTextBox"
+            Margin="240,41,699,558"
+            materialDesign:HintAssist.Hint="Search"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            KeyUp="Search_KeyUp"
+            SelectionOpacity="0.5"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Button
+            x:Name="DeleteButton"
+            Width="125"
+            Height="52"
+            Margin="956,61,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="DarkRed"
+            Click="DeleteButton_Click"
+            Content="Delete"
+            FontSize="20"
+            FontStyle="Italic"
+            FontWeight="Bold"
+            RenderTransformOrigin="-0.696,0.422" />
 
     </Grid>
 </Window>
