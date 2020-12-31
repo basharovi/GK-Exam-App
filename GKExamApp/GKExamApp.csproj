@@ -105,6 +105,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exam.cs" />
     <Compile Include="Models\MeritViewModel.cs" />
+    <Compile Include="Models\ExamHelper.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="UI\Account.xaml.cs">

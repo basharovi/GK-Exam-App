@@ -9,6 +9,7 @@ using System.Windows.Media.Animation;
 using GKExamApp.Data;
 using GKExamApp.Helper;
 using GKExamApp.Models;
+using ExamModel = GKExamApp.Models.Exam;
 
 namespace GKExamApp.UI
 {
@@ -20,6 +21,7 @@ namespace GKExamApp.UI
         private readonly ApplicationDbContext _db;
         private readonly List<Question> _questionList;
         private decimal _score;
+        private ExamHelper _examHelper = new ExamHelper();
         private bool _isExamFinished;
 
         public Exam()
@@ -29,7 +31,8 @@ namespace GKExamApp.UI
             _db = new ApplicationDbContext();
             _questionList = _db.Questions.ToList();
             AnswerComboBox.ItemsSource = BindAnswerCombobox();
-            BindQuestionsToUi(_questionList.NextRandom());
+
+            BeReadyForNextQuestion();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -154,8 +157,10 @@ namespace GKExamApp.UI
 
         private void CountdownTimer_Completed(object sender, EventArgs e)
         {
-            MessageBox.Show("Time's up!");
-            AfterFinishingExam();
+            if (_isExamFinished)
+                return;
+
+            BeReadyForNextQuestion();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -172,35 +177,59 @@ namespace GKExamApp.UI
             TextBoxOptionD.Text = question.OptionD;
 
             TextBoxQuestion.Text = question.QuestionText;
-            AnswerTextBox.Content = question.RightAnswer;
+            _examHelper.RightAnswer = question.RightAnswer;
+            _examHelper.Point = question.Point;
+            _examHelper.TimeDuration = question.TimeDuration;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            BindQuestionsToUi(_questionList.NextRandom());
+            BeReadyForNextQuestion();
+        }
+
+        private void BeReadyForNextQuestion()
+        {
             CalculateScore();
 
-            StartCountdown(CountdownDisplay, 50);
+            BindQuestionsToUi(_questionList.NextRandom());
+
+            StartCountdown(CountdownDisplay, _examHelper.TimeDuration);
         }
 
         private void CalculateScore()
         {
-            if (AnswerComboBox.Text.Equals(AnswerTextBox.Content))
+            if (AnswerComboBox.Text.Equals(_examHelper.RightAnswer))
             {
-                _score += 10;
-                CountdownDisplay.Text = _score.ToString();
+                _score += _examHelper.Point;
             }
         }
 
         private void FinishButton_Click(object sender, RoutedEventArgs e)
         {
-            CalculateScore();
+            _isExamFinished = true;
+
             AfterFinishingExam();
         }
 
         private void AfterFinishingExam()
         {
+            CalculateScore();
+
             MessageBox.Show($"{Utilities.UserModel.Name}, Your score is {_score} ");
+
+            var exam = new ExamModel
+            {
+                ExamDate = DateTime.Now,
+                UserId = Utilities.UserModel.Id,
+                Mark = _score
+            };
+
+            _db.Exams.Add(exam);
+            _db.SaveChanges();
+
+            Hide();
+            var merit = new MeritList();
+            merit.Show();
         }
     }
 }
