@@ -79,7 +79,10 @@ namespace GKExamApp.UI
             var name = Utilities.UserModel.Name.Split(' ');
 
             FirstNameTextBox.Text = name?[0];
-            LastNameTextBox.Text = name?[1];
+            if(name.Length > 1)
+            {
+                LastNameTextBox.Text = name?[1];
+            }
             EmailTextBox.Text = Utilities.UserModel.Email;
             PasswordTextBox.Password = Utilities.UserModel.Password;
         }
@@ -117,18 +120,8 @@ namespace GKExamApp.UI
 
         private void GoToDashboard()
         {
-            if (Utilities.UserModel.Role.Equals("Admin"))
-            {
-                var admin = new AdminDashboard();
-                admin.Show();
-                Hide();
-            }
-            else
-            {
-                var user = new UserDashboard();
-                user.Show();
-                Hide();
-            }
+            Hide();
+            Utilities.BackToDashboard();
         }
 
         private static bool IsValidEmailAddress(string email)

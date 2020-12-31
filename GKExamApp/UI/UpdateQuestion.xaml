@@ -84,6 +84,20 @@
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="PointTextBox"
+            Margin="545,426,291,135"
+            materialDesign:HintAssist.Hint="Enter Point"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TimeTextBox"
+            Margin="754,426,92,135"
+            materialDesign:HintAssist.Hint="Enter Time (sec.)"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
     </Grid>
 </Window>

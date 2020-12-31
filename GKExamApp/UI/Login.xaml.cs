@@ -72,20 +72,10 @@ namespace GKExamApp.UI
                     return;
                 }
 
-                if (theUser.Role.Equals("Admin"))
-                {
-                    var admin = new AdminDashboard();
-                    admin.Show();
-                    Hide();
-                }
-                else
-                {
-                    var user = new UserDashboard();
-                    user.Show();
-                    Hide();
-                }
-
                 Utilities.SetUserModel(theUser);
+
+                Hide();
+                Utilities.BackToDashboard();
             }
 
             catch (SqlException)

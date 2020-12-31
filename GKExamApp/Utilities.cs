@@ -1,4 +1,5 @@
 ﻿using GKExamApp.Models;
+using GKExamApp.UI;
 
 namespace GKExamApp
 {
@@ -11,7 +12,19 @@ namespace GKExamApp
             UserModel = user;
         }
 
-
+        public static void BackToDashboard()
+        {
+            if (UserModel.Role.Equals("Admin"))
+            {
+                var admin = new AdminDashboard();
+                admin.Show();
+            }
+            else
+            {
+                var user = new UserDashboard();
+                user.Show();
+            }
+        }
 
     }
 }

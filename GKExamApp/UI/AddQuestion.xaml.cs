@@ -24,10 +24,8 @@ namespace GKExamApp.UI
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var test = new AdminDashboard();
-            test.Closed += (s, args) => Close();
-            test.Show();
             Hide();
+            Utilities.BackToDashboard();
         }
 
 
@@ -68,7 +66,8 @@ namespace GKExamApp.UI
             TextBoxOptionC.Clear();
             TextBoxOptionD.Clear();
             TextBoxQuestion.Clear();
-
+            PointTextBox.Clear();
+            TimeTextBox.Clear();
         }
 
         private bool IsInputValid()
@@ -118,7 +117,7 @@ namespace GKExamApp.UI
                 return false;
             }
 
-            if (int.TryParse(PointTextBox.Text, out _) == false)
+            if (int.TryParse(TimeTextBox.Text, out _) == false)
             {
                 MessageBox.Show("Input Time is not valid integer number");
                 return false;

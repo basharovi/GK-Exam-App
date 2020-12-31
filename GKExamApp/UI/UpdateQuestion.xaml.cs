@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
@@ -42,6 +43,8 @@ namespace GKExamApp.UI
             TextBoxOptionD.Text = question.OptionD;
             TextBoxQuestion.Text = question.QuestionText;
             AnswerComboBox.Text = question.RightAnswer;
+            PointTextBox.Text = question.Point.ToString();
+            TimeTextBox.Text = question.TimeDuration.ToString();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -89,7 +92,8 @@ namespace GKExamApp.UI
             TextBoxOptionC.Clear();
             TextBoxOptionD.Clear();
             TextBoxQuestion.Clear();
-
+            PointTextBox.Clear();
+            TimeTextBox.Clear();
         }
 
         private bool IsInputValid()
@@ -121,6 +125,30 @@ namespace GKExamApp.UI
                 return false;
             }
 
+            if (string.IsNullOrEmpty(PointTextBox.Text))
+            {
+                MessageBox.Show("Point TextBox is Empty!");
+                return false;
+            }
+
+            if (decimal.TryParse(PointTextBox.Text, out _) == false)
+            {
+                MessageBox.Show("Input Point is not valid fractional number");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(TimeTextBox.Text))
+            {
+                MessageBox.Show("Time TextBox is Empty!");
+                return false;
+            }
+
+            if (int.TryParse(TimeTextBox.Text, out _) == false)
+            {
+                MessageBox.Show("Input Time is not valid integer number");
+                return false;
+            }
+
             return true;
         }
 
@@ -134,7 +162,9 @@ namespace GKExamApp.UI
                 OptionB = TextBoxOptionB.Text,
                 OptionC = TextBoxOptionC.Text,
                 OptionD = TextBoxOptionD.Text,
-                RightAnswer = AnswerComboBox.Text
+                RightAnswer = AnswerComboBox.Text,
+                Point = Convert.ToDecimal(PointTextBox.Text),
+                TimeDuration = Convert.ToInt32(TimeTextBox.Text)
             };
 
             return question;
