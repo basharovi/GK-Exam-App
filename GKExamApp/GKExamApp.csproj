@@ -98,6 +98,10 @@
     <Compile Include="Migrations\202007161751077_Initial Migration.designer.cs">
       <DependentUpon>202007161751077_Initial Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012311433180_Updated Question Table.cs" />
+    <Compile Include="Migrations\202012311433180_Updated Question Table.designer.cs">
+      <DependentUpon>202012311433180_Updated Question Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exam.cs" />
     <Compile Include="Models\MeritViewModel.cs" />
@@ -224,6 +228,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202007161751077_Initial Migration.resx">
       <DependentUpon>202007161751077_Initial Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012311433180_Updated Question Table.resx">
+      <DependentUpon>202012311433180_Updated Question Table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
