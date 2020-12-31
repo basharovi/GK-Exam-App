@@ -13,6 +13,8 @@ namespace GKExamApp.Models
         public string OptionB { get; set; }
         public string OptionC { get; set; }
         public string OptionD { get; set; }
+        public decimal Point { get; set; }
+        public int TimeDuration { get; set; }
         public string RightAnswer { get; set; }
 
     }

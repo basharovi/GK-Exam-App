@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using GKExamApp.Data;
 using GKExamApp.Models;
@@ -12,7 +12,6 @@ namespace GKExamApp.UI
     /// </summary>
     public partial class AddQuestion
     {
-        private readonly string _assetDirectory = Directory.GetCurrentDirectory() + @"\Assets";
         private readonly ApplicationDbContext _db;
 
         public AddQuestion()
@@ -101,6 +100,30 @@ namespace GKExamApp.UI
                 return false;
             }
 
+            if (string.IsNullOrEmpty(PointTextBox.Text))
+            {
+                MessageBox.Show("Point TextBox is Empty!");
+                return false;
+            }
+
+            if (decimal.TryParse(PointTextBox.Text, out _) == false)
+            {
+                MessageBox.Show("Input Point is not valid fractional number");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(TimeTextBox.Text))
+            {
+                MessageBox.Show("Time TextBox is Empty!");
+                return false;
+            }
+
+            if (int.TryParse(PointTextBox.Text, out _) == false)
+            {
+                MessageBox.Show("Input Time is not valid integer number");
+                return false;
+            }
+
             return true;
         }
 
@@ -113,7 +136,9 @@ namespace GKExamApp.UI
                 OptionB = TextBoxOptionB.Text,
                 OptionC = TextBoxOptionC.Text,
                 OptionD = TextBoxOptionD.Text,
-                RightAnswer = AnswerComboBox.Text
+                RightAnswer = AnswerComboBox.Text,
+                Point = Convert.ToDecimal(PointTextBox.Text),
+                TimeDuration = Convert.ToInt32(TimeTextBox.Text)
             };
 
             return question;

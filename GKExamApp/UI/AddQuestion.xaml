@@ -26,7 +26,7 @@
             x:Name="SubmitButton"
             Width="150"
             Height="55"
-            Margin="445,520,0,0"
+            Margin="442,527,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="SubmitButton_OnClickButton_Click"
@@ -81,6 +81,20 @@
             x:Name="TextBoxQuestion"
             Margin="110,110,92,446"
             materialDesign:HintAssist.Hint="Enter the question"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="PointTextBox"
+            Margin="545,426,291,135"
+            materialDesign:HintAssist.Hint="Enter Point"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TimeTextBox"
+            Margin="754,426,92,135"
+            materialDesign:HintAssist.Hint="Enter Time (sec.)"
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
