@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using GKExamApp.Data;
+using GKExamApp.Helper;
 using GKExamApp.Models;
 
 namespace GKExamApp.UI
@@ -15,27 +17,34 @@ namespace GKExamApp.UI
     /// </summary>
     public partial class Exam
     {
-        private readonly string _assetDirectory = Directory.GetCurrentDirectory() + @"\Assets";
         private readonly ApplicationDbContext _db;
+        private readonly List<Question> _questionList;
+        private decimal _score;
+        private bool _isExamFinished;
 
         public Exam()
         {
             InitializeComponent();
 
             _db = new ApplicationDbContext();
+            _questionList = _db.Questions.ToList();
             AnswerComboBox.ItemsSource = BindAnswerCombobox();
-
-            
+            BindQuestionsToUi(_questionList.NextRandom());
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var test = new AdminDashboard();
+            if (!_isExamFinished)
+            {
+                MessageBox.Show("Please, finish the exam for going back!");
+                return;
+            }
+
+            var test = new UserDashboard();
             test.Closed += (s, args) => Close();
             test.Show();
             Hide();
         }
-
 
         private static IEnumerable<string> BindAnswerCombobox()
         {
@@ -54,7 +63,7 @@ namespace GKExamApp.UI
 
         private void SubmitButton_OnClickButton_Click(object sender, RoutedEventArgs e)
         {
-            if(IsInputValid() == false)
+            if (IsInputValid() == false)
                 return;
 
 
@@ -146,11 +155,52 @@ namespace GKExamApp.UI
         private void CountdownTimer_Completed(object sender, EventArgs e)
         {
             MessageBox.Show("Time's up!");
+            AfterFinishingExam();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Loaded += (o, args) => StartCountdown(CountdownDisplay, 120);
+            //StateChanged += (o, args) => StartCountdown(CountdownDisplay, 50);
+            
+        }
+
+        private void BindQuestionsToUi(Question question)
+        {
+            TextBoxOptionA.Text = question.OptionA;
+            TextBoxOptionB.Text = question.OptionB;
+            TextBoxOptionC.Text = question.OptionC;
+            TextBoxOptionD.Text = question.OptionD;
+
+            TextBoxQuestion.Text = question.QuestionText;
+            AnswerTextBox.Content = question.RightAnswer;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            BindQuestionsToUi(_questionList.NextRandom());
+            CalculateScore();
+
+            StartCountdown(CountdownDisplay, 50);
+        }
+
+        private void CalculateScore()
+        {
+            if (AnswerComboBox.Text.Equals(AnswerTextBox.Content))
+            {
+                _score += 10;
+                CountdownDisplay.Text = _score.ToString();
+            }
+        }
+
+        private void FinishButton_Click(object sender, RoutedEventArgs e)
+        {
+            CalculateScore();
+            AfterFinishingExam();
+        }
+
+        private void AfterFinishingExam()
+        {
+            MessageBox.Show($"{Utilities.UserModel.Name}, Your score is {_score} ");
         }
     }
 }

@@ -9,9 +9,10 @@
     Width="1050"
     Height="850"
     Closing="Window_Closing"
+    Loaded="Window_Loaded"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" Loaded="Window_Loaded">
+    mc:Ignorable="d">
     <Grid>
         <Button
             x:Name="BackButton"
@@ -28,6 +29,7 @@
             materialDesign:HintAssist.Hint="Option A"
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
+            IsReadOnly="True"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <TextBox
             x:Name="TextBoxOptionB"
@@ -35,6 +37,7 @@
             materialDesign:HintAssist.Hint="Option B"
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
+            IsReadOnly="True"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <TextBox
             x:Name="TextBoxOptionC"
@@ -42,6 +45,7 @@
             materialDesign:HintAssist.Hint="Option C"
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
+            IsReadOnly="True"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <TextBox
             x:Name="TextBoxOptionD"
@@ -49,6 +53,7 @@
             materialDesign:HintAssist.Hint="Option D"
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
+            IsReadOnly="True"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <ComboBox
             x:Name="AnswerComboBox"
@@ -72,6 +77,7 @@
             materialDesign:HintAssist.Hint="The question"
             FontFamily="Champagne &amp; Limousines"
             FontSize="16"
+            IsReadOnly="True"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <Button
             x:Name="NextButton"
@@ -81,6 +87,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Panel.ZIndex="17"
+            Click="NextButton_Click"
             Content="Next Question"
             FontSize="35"
             FontStyle="Italic"
@@ -101,6 +108,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Panel.ZIndex="17"
+            Click="FinishButton_Click"
             Content="Finish Exam"
             FontSize="35"
             FontStyle="Italic"
@@ -115,11 +123,19 @@
         </Button>
         <TextBlock
             x:Name="CountdownDisplay"
-            Margin="797,62,93,720"
+            Margin="797,62,93,706"
             FontSize="30"
             Foreground="DeepSkyBlue"
-            Text="5"
+            Text="0"
             TextAlignment="Left" />
+        <Label
+            x:Name="AnswerTextBox"
+            Margin="707,549,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Label"
+            FontSize="20"
+            Visibility="Hidden" />
 
     </Grid>
 </Window>

@@ -48,7 +48,7 @@
             x:Name="SignUpButton"
             Width="165"
             Height="Auto"
-            Margin="220,366,-116,45"
+            Margin="220,363,-116,48"
             HorizontalAlignment="Left"
             Background="OrangeRed"
             BorderBrush="DarkSeaGreen"
