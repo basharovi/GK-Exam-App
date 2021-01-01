@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -139,7 +138,7 @@ namespace GKExamApp.UI
         private void StartCountdown(FrameworkElement target, int timerLength)
         {
             var countdownAnimation = new StringAnimationUsingKeyFrames();
-            for (var i = timerLength; i > 0; i--)
+            for (var i = timerLength; i > -1; i--)
             {
                 var keyTime = TimeSpan.FromSeconds(timerLength - i);
                 var frame = new DiscreteStringKeyFrame(i.ToString(), KeyTime.FromTimeSpan(keyTime));

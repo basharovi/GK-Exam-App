@@ -111,11 +111,11 @@
     <Compile Include="UI\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\PractiseQuestion.xaml.cs">
+      <DependentUpon>PractiseQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Exam.xaml.cs">
       <DependentUpon>Exam.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Exam2.xaml.cs">
-      <DependentUpon>Exam2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\MeritList.xaml.cs">
       <DependentUpon>MeritList.xaml</DependentUpon>
@@ -164,11 +164,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Exam.xaml">
+    <Page Include="UI\PractiseQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Exam2.xaml">
+    <Page Include="UI\Exam.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

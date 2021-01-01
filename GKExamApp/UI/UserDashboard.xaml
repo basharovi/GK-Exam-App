@@ -22,8 +22,7 @@
             Height="Auto"
             Margin="63,155,335,344"
             Background="White"
-            BorderBrush="#fff"
-            Click="CSVInputButton_Click">
+            BorderBrush="#fff" Click="QuestionBankButton_Click">
             <StackPanel>
                 <StackPanel Width="301" Orientation="Horizontal">
 
@@ -47,7 +46,7 @@
                             Height="46"
                             FontSize="18"
                             Foreground="DeepSkyBlue"
-                            Text="Practise questions offline"
+                            Text="Practise questions"
                             TextAlignment="Left" />
                     </StackPanel>
                 </StackPanel>

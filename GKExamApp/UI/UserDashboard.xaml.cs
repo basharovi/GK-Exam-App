@@ -22,11 +22,6 @@ namespace GKExamApp.UI
             Hide();
         }
 
-        private void CSVInputButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Under Construction! Thanks :D");
-        }
-
         private void MeritListButton_Click(object sender, RoutedEventArgs e)
         {
             var test = new MeritList();
@@ -47,6 +42,13 @@ namespace GKExamApp.UI
         private void AccountButton_Click(object sender, RoutedEventArgs e)
         {
             var test = new Account();
+            test.Closed += (s, args) => Close();
+            test.Show();
+            Hide();
+        }
+        private void QuestionBankButton_Click(object sender, RoutedEventArgs e)
+        {
+            var test = new PractiseQuestion();
             test.Closed += (s, args) => Close();
             test.Show();
             Hide();
