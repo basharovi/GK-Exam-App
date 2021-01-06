@@ -20,9 +20,6 @@ namespace GKExamApp.UI
         {
             InitializeComponent();
             _db = new ApplicationDbContext();
-
-            UserNameTextBox.Text = "demo1";
-            PasswordTextBox.Password = "demo1";
         }
 
 

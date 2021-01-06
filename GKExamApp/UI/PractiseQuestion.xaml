@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Upload"
     Width="1050"
-    Height="850"
+    Height="650"
     Closing="Window_Closing"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Margin="0,0,0,7">
         <Button
             x:Name="BackButton"
             Width="74"
@@ -22,51 +22,11 @@
             Click="BackButton_Click"
             Content="Back"
             RenderTransformOrigin="-0.696,0.422" />
-        <TextBox
-            x:Name="TextBoxOptionA"
-            Margin="106,309,538,439"
-            materialDesign:HintAssist.Hint="Option A"
-            FontFamily="Champagne &amp; Limousines"
-            FontSize="16"
-            IsReadOnly="True"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-        <TextBox
-            x:Name="TextBoxOptionB"
-            Margin="541,309,117,439"
-            materialDesign:HintAssist.Hint="Option B"
-            FontFamily="Champagne &amp; Limousines"
-            FontSize="16"
-            IsReadOnly="True"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-        <TextBox
-            x:Name="TextBoxOptionC"
-            Margin="106,399,538,359"
-            materialDesign:HintAssist.Hint="Option C"
-            FontFamily="Champagne &amp; Limousines"
-            FontSize="16"
-            IsReadOnly="True"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-        <TextBox
-            x:Name="TextBoxOptionD"
-            Margin="541,387,117,359"
-            materialDesign:HintAssist.Hint="Option D"
-            FontFamily="Champagne &amp; Limousines"
-            FontSize="16"
-            IsReadOnly="True"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-        <TextBox
-            x:Name="TextBoxQuestion"
-            Margin="106,139,117,572"
-            materialDesign:HintAssist.Hint="The question"
-            FontFamily="Champagne &amp; Limousines"
-            FontSize="16"
-            IsReadOnly="True"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <Button
             x:Name="NextButton"
             Width="265"
             Height="64"
-            Margin="579,669,0,0"
+            Margin="588,464,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Panel.ZIndex="17"
@@ -91,17 +51,57 @@
             Content="Label"
             FontSize="20"
             Visibility="Hidden" />
+        <TextBox
+            x:Name="TextBoxOptionA"
+            Margin="103,235,541,319"
+            materialDesign:HintAssist.Hint="Option A"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            IsReadOnly="True"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxOptionB"
+            Margin="538,235,120,319"
+            materialDesign:HintAssist.Hint="Option B"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            IsReadOnly="True"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxOptionC"
+            Margin="103,325,541,239"
+            materialDesign:HintAssist.Hint="Option C"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            IsReadOnly="True"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxOptionD"
+            Margin="538,313,120,239"
+            materialDesign:HintAssist.Hint="Option D"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            IsReadOnly="True"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox
+            x:Name="TextBoxQuestion"
+            Margin="103,121,120,420"
+            materialDesign:HintAssist.Hint="The question"
+            FontFamily="Champagne &amp; Limousines"
+            FontSize="16"
+            IsReadOnly="True"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <ComboBox
             x:Name="AnswerComboBox"
             Width="245"
             Height="50"
-            Margin="261,549,0,0"
+            Margin="258,455,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="16"
             SelectedIndex="0" />
         <Label
-            Margin="106,558,0,0"
+            Margin="103,464,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Right Answer"
